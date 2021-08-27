@@ -15,11 +15,11 @@ public class OtelClientInterceptor implements ClientInterceptor {
 	private static OpenTelemetry openTelemetry;
 	
 	public void setOpenTelemetry(OpenTelemetry openTelemetry) {
-		this.openTelemetry = openTelemetry;
+		OtelClientInterceptor.openTelemetry = openTelemetry;
 	}
 	
 	public OpenTelemetry getOpenTelemetry() {
-		return this.openTelemetry;
+		return OtelClientInterceptor.openTelemetry;
 	}
 
 	@Override
