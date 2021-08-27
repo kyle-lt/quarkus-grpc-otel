@@ -24,7 +24,7 @@ public class GreetingResourceOnServer {
 	private static final Logger logger = Logger.getLogger(GreetingResourceOnServer.class);
 	
 	// Grab the OTel Resource Attribute values from environment variables
-	String otelServiceName = System.getenv("OTEL_SERVICE_NAME");
+	String otelServiceName = System.getenv("OTEL_SERVICE_NAME") + "_CLIENT";
 	String otelServiceNamespace = System.getenv("OTEL_SERVICE_NAMESPACE");
 	
 	// Creating an instance of OtelConfig for this Client Resource
