@@ -20,7 +20,9 @@ public class HelloService implements Greeter {
     	logger.info("Request received at Server!");
     	
         return Uni.createFrom().item(() ->
-                HelloReply.newBuilder().setMessage("Hello " + request.getName()).build()
+                HelloReply.newBuilder()
+                .setMessage("Hello " + request.getName())
+                .build()
         );
     }
 }
