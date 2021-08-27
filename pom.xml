@@ -18,6 +18,14 @@
 		<quarkus.platform.group-id>io.quarkus.platform</quarkus.platform.group-id>
 		<quarkus.platform.version>2.1.3.Final</quarkus.platform.version>
 		<surefire-plugin.version>3.0.0-M5</surefire-plugin.version>
+		<opentelemetry-api.version>1.4.1</opentelemetry-api.version>
+		<opentelemetry-sdk.version>1.4.1</opentelemetry-sdk.version>
+		<opentelemetry-exporter-logging.version>1.4.1</opentelemetry-exporter-logging.version>
+		<opentelemetry-exporter-jaeger>1.4.1</opentelemetry-exporter-jaeger>
+		<opentelemetry-exporter-otlp.version>1.4.1</opentelemetry-exporter-otlp.version>
+		<opentelemetry-sdk-extension-autoconfigure.version>1.4.1-alpha</opentelemetry-sdk-extension-autoconfigure.version>
+		<opentelemetry-semconv.version>1.4.1-alpha</opentelemetry-semconv.version>
+		<opentelemetry-exporter-otlp-metrics.version>1.4.1-alpha</opentelemetry-exporter-otlp-metrics.version>
 	</properties>
 	<dependencyManagement>
 		<dependencies>
@@ -53,6 +61,32 @@
 			<groupId>io.quarkus</groupId>
 			<artifactId>quarkus-grpc</artifactId>
 		</dependency>
+		<!-- OpenTelemetry "Core" Components -->
+		<dependency>
+			<groupId>io.opentelemetry</groupId>
+			<artifactId>opentelemetry-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>io.opentelemetry</groupId>
+			<artifactId>opentelemetry-sdk</artifactId>
+		</dependency>
+		<!-- OpenTelemetry Exporters -->
+		<dependency>
+			<groupId>io.opentelemetry</groupId>
+			<artifactId>opentelemetry-exporter-logging</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>io.opentelemetry</groupId>
+			<artifactId>opentelemetry-exporter-jaeger</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>io.opentelemetry</groupId>
+			<artifactId>opentelemetry-exporter-otlp</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>io.opentelemetry</groupId>
+			<artifactId>opentelemetry-exporter-otlp-metrics</artifactId>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>
@@ -66,7 +100,7 @@
 						<goals>
 							<goal>build</goal>
 							<goal>generate-code</goal>
-							<!--<goal>generate-code-tests</goal>-->
+							<!--<goal>generate-code-tests</goal> -->
 						</goals>
 					</execution>
 				</executions>
