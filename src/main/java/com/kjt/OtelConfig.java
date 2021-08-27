@@ -6,6 +6,7 @@ import javax.enterprise.context.ApplicationScoped;
 
 import org.jboss.logging.Logger;
 
+import io.opentelemetry.exporter.otlp.trace.OtlpGrpcSpanExporter;
 import io.opentelemetry.exporter.logging.LoggingSpanExporter;
 import io.opentelemetry.api.trace.propagation.W3CTraceContextPropagator;
 import io.opentelemetry.context.propagation.ContextPropagators;
@@ -18,11 +19,6 @@ import io.opentelemetry.api.OpenTelemetry;
 import io.opentelemetry.api.common.AttributeKey;
 import io.opentelemetry.api.common.Attributes;
 import io.opentelemetry.sdk.trace.SdkTracerProvider;
-
-//import org.eclipse.microprofile.config.inject.ConfigProperty;
-
-// OTLP Exporter
-import io.opentelemetry.exporter.otlp.trace.OtlpGrpcSpanExporter;
 
 @ApplicationScoped
 public class OtelConfig {
@@ -77,8 +73,8 @@ public class OtelConfig {
 		OpenTelemetrySdk openTelemetrySdk = OpenTelemetrySdk.builder().setTracerProvider(sdkTracerProvider)
 				.setPropagators(ContextPropagators
 						.create(W3CTraceContextPropagator.getInstance()))
-				.buildAndRegisterGlobal();
-				//.build();
+				//.buildAndRegisterGlobal();
+				.build();
 
 		// ** Create Shutdown Hook **
 		Runtime.getRuntime().addShutdownHook(new Thread(sdkTracerProvider::shutdown));
@@ -86,12 +82,4 @@ public class OtelConfig {
 		return openTelemetrySdk;
 
 	}
-
-	/*
-	public static void retrieveResourceAttrs(@ConfigProperty(name = "OTEL_SERVICE_NAME") String otelServiceName,
-			@ConfigProperty(name = "OTEL_SERVICE_NAMESPACE") String otelServiceNamespace) {
-
-	}
-	*/
-
 }
