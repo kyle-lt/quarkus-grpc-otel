@@ -6,41 +6,16 @@ networks:
 
 services:
 
-  springboot:
-    #build: ./java-nativeimage-springboot-restservice
-    image: kjtully/java-nativeimage-springboot-restservice:latest
-    container_name: springboot
-    #env_file:
-      #- otel-chain-env-vars.env
-    ports:
-      - "8081:8081"
-    networks:
-      - monitoring
-
   quarkus:
-    #build: ./java-nativeimage-quarkus-restservice
     image: kjtully/java-nativeimage-quarkus-restservice:latest
     container_name: quarkus
     environment:
       - OTEL_SERVICE_NAME=java-nativeimage-quarkus-restservice
       - OTEL_SERVICE_NAMESPACE=kjt-java-nativeimage
-      #- OTEL_RESOURCE_ATTRIBUTES=service.name=java-nativeimage-quarkus-restservice,service.namespace=kjt-java-nativeimage
-      #- OTEL_TRACES_EXPORTER=otlp
-      #- OTEL_EXPORTER_OTLP_ENDPOINT=http://host.docker.internal:4317
     #env_file:
       #- otel-chain-env-vars.env
     ports:
       - "8080:8080"
     networks:
       - monitoring
-
-  micronaut:
-    #build: ./java-nativeimage-quarkus-restservice
-    image: kjtully/java-nativeimage-micronaut-restservice:latest
-    container_name: micronaut
-    #env_file:
-      #- otel-chain-env-vars.env
-    ports:
-      - "8082:8082"
-    networks:
-      - monitoring 
+ 
