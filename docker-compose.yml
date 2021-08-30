@@ -7,15 +7,16 @@ networks:
 services:
 
   quarkus:
-    image: kjtully/java-nativeimage-quarkus-restservice:latest
+    image: kjt/quarkus-grpc-otel:1.0.0-SNAPSHOT
     container_name: quarkus
     environment:
-      - OTEL_SERVICE_NAME=java-nativeimage-quarkus-restservice
-      - OTEL_SERVICE_NAMESPACE=kjt-java-nativeimage
+      - OTEL_SERVICE_NAME=quarkus-grpc-otel
+      - OTEL_SERVICE_NAMESPACE=kjt-quarkus-nativeimage
     #env_file:
       #- otel-chain-env-vars.env
     ports:
-      - "8080:8080"
+      - "8081:8081"
+      #- "9009:9009"
     networks:
       - monitoring
  
