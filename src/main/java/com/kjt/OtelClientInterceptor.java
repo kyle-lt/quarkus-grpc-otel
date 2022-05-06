@@ -1,6 +1,9 @@
 package com.kjt;
 
+import javax.enterprise.context.ApplicationScoped;
+
 import io.grpc.CallOptions;
+
 import io.grpc.Channel;
 import io.grpc.ClientCall;
 import io.grpc.ClientInterceptor;
@@ -8,8 +11,11 @@ import io.grpc.ForwardingClientCall;
 import io.grpc.Metadata;
 import io.grpc.MethodDescriptor;
 import io.opentelemetry.context.Context;
+import io.quarkus.grpc.GlobalInterceptor;
 import io.opentelemetry.api.OpenTelemetry;
 
+@ApplicationScoped
+@GlobalInterceptor
 public class OtelClientInterceptor implements ClientInterceptor {
 	
 	private static OpenTelemetry openTelemetry;
