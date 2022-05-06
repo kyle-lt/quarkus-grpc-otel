@@ -4,7 +4,8 @@ package com.kjt;
 
 import javax.enterprise.context.ApplicationScoped;
 
-import org.jboss.logging.Logger;
+//import org.jboss.logging.Logger;
+import java.util.logging.Logger;
 
 import io.grpc.Metadata;
 import io.grpc.ServerCall;
@@ -17,11 +18,14 @@ import io.opentelemetry.api.trace.SpanKind;
 import io.opentelemetry.api.trace.Tracer;
 import io.opentelemetry.context.Context;
 import io.opentelemetry.context.Scope;
+import io.quarkus.grpc.GlobalInterceptor;
 
 @ApplicationScoped
+@GlobalInterceptor
 public class OtelServerInterceptor implements ServerInterceptor {
 
-	private static final Logger logger = Logger.getLogger(OtelServerInterceptor.class);
+	//private static final Logger logger = Logger.getLogger(OtelServerInterceptor.class);
+	private static final Logger logger = Logger.getLogger(OtelServerInterceptor.class.getName());
 
 	// Grab the OTel Resource Attribute values from environment variables
 	String otelServiceName = System.getenv("OTEL_SERVICE_NAME") + "_SERVER";
