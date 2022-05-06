@@ -62,7 +62,7 @@ public class OtelConfig {
 		 *  Use AlwaysOn TraceConfig
 		 */
 		SdkTracerProvider sdkTracerProvider = SdkTracerProvider.builder().addSpanProcessor(spanProcessor) // OTLP
-				.addSpanProcessor(SimpleSpanProcessor.create(new LoggingSpanExporter()))
+				.addSpanProcessor(SimpleSpanProcessor.create(LoggingSpanExporter.create()))
 				.setResource(Resource.getDefault().merge(serviceNameResource))
 				// .setResource(Resource.getDefault())
 				.setSampler(Sampler.alwaysOn()).build();
