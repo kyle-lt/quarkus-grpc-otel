@@ -1,6 +1,7 @@
 package com.kjt;
 
-import org.jboss.logging.Logger;
+//import org.jboss.logging.Logger;
+import java.util.logging.Logger;
 
 import io.quarkus.example.Greeter;
 import io.quarkus.example.HelloReply;
@@ -12,7 +13,8 @@ import io.smallrye.mutiny.Uni;
 public class HelloService implements Greeter {
 	
 	// Logger
-	private static final Logger logger = Logger.getLogger(HelloService.class);
+	//private static final Logger logger = Logger.getLogger(HelloService.class); //jboss logging
+	private static final Logger logger = Logger.getLogger(HelloService.class.getName()); //java.util.logging
 
     @Override
     public Uni<HelloReply> sayHello(HelloRequest request) {
