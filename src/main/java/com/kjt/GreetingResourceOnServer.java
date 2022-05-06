@@ -6,7 +6,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import org.jboss.logging.Logger;
+import java.util.logging.Logger;
 
 import io.quarkus.example.GreeterGrpc.GreeterBlockingStub;
 import io.opentelemetry.api.OpenTelemetry;
@@ -20,8 +20,8 @@ import io.quarkus.grpc.GrpcClient;
 
 @Path("/hello")
 public class GreetingResourceOnServer {
-	
-	private static final Logger logger = Logger.getLogger(GreetingResourceOnServer.class);
+
+	private static final Logger logger = Logger.getLogger(GreetingResourceOnServer.class.getName());
 	
 	// Grab the OTel Resource Attribute values from environment variables
 	String otelServiceName = System.getenv("OTEL_SERVICE_NAME") + "_CLIENT";
@@ -81,7 +81,8 @@ public class GreetingResourceOnServer {
         			.getMessage();
     		
     	} catch (Exception e) {
-    		logger.error("Error during OT section, here it is!", e);
+    		//logger.error("Error during OT section, here it is!", e);
+    		logger.info("Error during OT section!");
     		span.setStatus(StatusCode.ERROR, "gRPC status: " + e);
     		return "error";
     	} finally {
